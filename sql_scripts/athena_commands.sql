@@ -1,4 +1,4 @@
--- save as view - view_tickit_sales_by_month and
+-- save as view - view_tickit_sales_by_month ss
 SELECT d.year,
 	d.month,
 	round(sum(cast(s.pricepaid AS DECIMAL(8,2)) * s.qtysold), 2) AS sum_sales,
