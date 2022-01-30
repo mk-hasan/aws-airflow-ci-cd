@@ -21,12 +21,12 @@ python3 -m pytest --cache-clear
 python3 -m pytest dags/ --black -v || exit 1
 
 echo "\n⌛ Starting Pytest tests..."
-pushd tests || exit 1
-python3 -m pytest tests.py -v || exit 1
-popd || exit 1
+cd tests || exit 1
+python3 -m pytest tests/tests.py -v || exit 1
+cd .. || exit 1
 
 echo "\n⌛ Starting SQLFluff tests..."
-pushd dags || exit 1
+cd dags || exit 1
 python3 -m sqlfluff lint \
   --dialect redshift \
   --ignore parsing,templating \
@@ -37,7 +37,7 @@ python3 -m sqlfluff lint \
   --ignore parsing,templating \
   --format yaml \
   sql_data_lake/  || exit 1
-popd || exit 1
+cd .. || exit 1
 
 echo "\n⌛ Starting JSON validation tests..."
 python3 -m json.tool airflow_variables/variables.json
