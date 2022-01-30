@@ -22,7 +22,7 @@ python3 -m pytest dags/ --black -v || exit 1
 
 echo "\n⌛ Starting Pytest tests..."
 cd tests || exit 1
-python3 -m pytest tests/tests.py -v || exit 1
+python3 -m pytest tests.py -v || exit 1
 cd .. || exit 1
 
 echo "\n⌛ Starting SQLFluff tests..."
